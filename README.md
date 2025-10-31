@@ -15,14 +15,14 @@ The system is modular, and uses a **struct/method-based** approach.
 
 
 The paper doll system will allow for the use of the following default drawing parameters as normal:\
-- image_xscale\
-- image_yscale\
-- image_angle\
-- image_blend\
+- image_xscale
+- image_yscale
+- image_angle
+- image_blend
 - image_alpha
 
 The following default drawing parameters have no effect on sprites drawn via the paper doll system:\
-- image_index\
+- image_index
 - image_speed
 
 
