@@ -16,5 +16,4 @@ There is a demo project included in the repository, but it uses free assets, and
 
 
 
-[![Paper Doll System Video Demo](https://img.youtube.com/vi/FxvSRFjp75o/0.jpg)](https://www.youtube.com/watch?v=FxvSRFjp75o), 
-
+[![Paper Doll System Video Demo](https://img.youtube.com/vi/FxvSRFjp75o/0.jpg)](https://www.youtube.com/watch?v=FxvSRFjp75o)
