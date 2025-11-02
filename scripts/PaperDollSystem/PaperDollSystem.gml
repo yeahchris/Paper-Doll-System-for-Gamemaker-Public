@@ -1,4 +1,3 @@
-pal_swap_init_system(shd_pal_swapper,shd_pal_html_sprite,shd_pal_html_surface);
 global.PDSTemplates = {}
 
 ///@desc Adds a new sheet template that you can use for a paper doll system. Can be applied to a paper doll system either when you create one or by calling the ApplyTemplate method afterward.
@@ -59,6 +58,9 @@ function PDSVerifyAnimations(_array){
 ///@desc Returns a new Paper Doll System. The paper doll system has a variety of static methods for issuing commands to the paper doll system. See individual methods' descriptions for details.
 ///@param {string} _template_key The sheet template for the Paper Doll System to use.
 function PaperDollSystem(_template_key) constructor {
+	if (!variable_global_exists("retro_pal_swapper")){
+		pal_swap_init_system(shd_pal_swapper,shd_pal_html_sprite,shd_pal_html_surface);
+	}
     __sprite_array = [];
     __animation = {};
     __currentframe = 0;
