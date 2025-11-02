@@ -16,21 +16,3 @@ There is a demo project included in the repository, but it uses free assets, and
 
 [![Paper Doll System Demo](https://img.youtube.com/vi/FxvSRFjp75o/0.jpg)](https://www.youtube.com/watch?v=FxvSRFjp75o), 
 
-
-
-
-
-The paper doll system will honor the following default drawing parameters as normal:
-- image_xscale
-- image_yscale
-- image_angle
-- image_blend
-- image_alpha
-
-The following default drawing parameters have no effect on sprites drawn via the paper doll system:
-- image_index
-- image_speed
-
-
-
-
