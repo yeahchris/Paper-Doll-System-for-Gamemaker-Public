@@ -10,27 +10,9 @@ Sprite sheet templates can be created via a function call without editing any co
 
 The system integrates with (and is bundled with) **Pixelated Pope’s RetroPaletteSwapper**, allowing arbitrary palette swaps of individual paper doll parts.
 
-There is a demo project included in the repository, but it uses free assets of very poor quality and overall does a poor job of showing off the system's capabilities. Here is a video demo which uses paid assets:
+There is a demo project included in the repository, but it uses free assets, and does not demonstrate palette swapping of paper doll layers. There is also a video demo below:
 
 
 
 [![Paper Doll System Demo](https://img.youtube.com/vi/FxvSRFjp75o/0.jpg)](https://www.youtube.com/watch?v=FxvSRFjp75o), 
-
-
-
-
-
-The paper doll system will honor the following default drawing parameters as normal:
-- image_xscale
-- image_yscale
-- image_angle
-- image_blend
-- image_alpha
-
-The following default drawing parameters have no effect on sprites drawn via the paper doll system:
-- image_index
-- image_speed
-
-
-
 
