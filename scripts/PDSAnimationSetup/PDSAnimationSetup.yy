@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PDSAnimationSetup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PDSAnimationSetup",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/PaperDollSystem/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

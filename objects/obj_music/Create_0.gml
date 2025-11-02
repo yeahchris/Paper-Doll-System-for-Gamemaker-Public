@@ -1,0 +1,1 @@
+music = audio_play_sound(ost_calmbgm,1000,1,1);

@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"License",
+  "name":"License",
+  "parent":{
+    "name":"PaperDollSystem",
+    "path":"folders/PaperDollSystem.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

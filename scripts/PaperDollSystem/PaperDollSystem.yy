@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PaperDollSystem",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PaperDollSystem",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/PaperDollSystem/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
