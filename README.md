@@ -1,4 +1,4 @@
-# 🧍 Paper Doll System for GameMaker
+# Paper Doll System for GameMaker
 
 **Paper Doll System for GameMaker** is... a paper doll system for GameMaker.
 
