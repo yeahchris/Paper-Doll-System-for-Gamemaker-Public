@@ -43,6 +43,4 @@ global.PDSAnimations[ANIM.FSWALKDOWN].duration =			[8,8,8,8];
 //Verify Animations
 PDSVerifyAnimations(global.PDSAnimations);
 
-//Add sheet template
-
 
