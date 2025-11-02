@@ -11,6 +11,7 @@ Sprite sheet templates can be created via a function call without editing any co
 The system integrates with (and is bundled with) **Pixelated Pope’s RetroPaletteSwapper**, allowing arbitrary palette swaps of individual paper doll parts.
 
 [GET THE YYMPS HERE](https://github.com/yeahchris/Paper-Doll-System-for-Gamemaker-Public/releases/download/Releases/PaperDollSystem.yymps)
+[SEE THE DOCUMENTATION HERE](https://github.com/yeahchris/Paper-Doll-System-for-Gamemaker-Public/wiki)
 
 There is a demo project included in the repository, but it uses free assets, and does not demonstrate palette swapping of paper doll layers. There is also a video demo below:
 
