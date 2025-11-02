@@ -3,6 +3,7 @@ global.PDSTemplates = {}
 
 ///@desc Adds a new sheet template that you can use for a paper doll system. Can be applied to a paper doll system either when you create one or by calling the ApplyTemplate method afterward.
 ///@param _key {string} A one-word key for storing/retrieving the template. Will be used as a key to identify and retrieve the template. No spaces.
+///@param _animation_array The array where animations for this template can be found.
 ///@param _frame_width {real} The width (in pixels) of an individual frame on the sprite sheets for this template. Integer.
 ///@param _frame_height {real} The height (in pixels) of an individual frame on the sprite sheets for this template. Integer.
 ///@param _sheet_width {real} The width (in frames) for a given row on the sprite sheet. Integer.
@@ -283,10 +284,7 @@ function PaperDollSystem(_template_key) constructor {
 	///@param _xscale {real} Horizontal scaling multiplier, .5 to draw it at half width, 2 to draw it at double its normal width.
 	///@param _yscale {real} Vertical scaling multiplier, .5 to draw it at half height, 2 to draw it at double its normal height.
 	///@param _angle {real} Rotation to apply to the drawn paper doll system.
-	///@param _c1 {Constant.Colour} The color with which to blend the paper doll systems top left. c_white to draw it normally.
-	///@param _c2 {Constant.Colour} The color with which to blend the paper doll systems top right. c_white to draw it normally.
-	///@param _c3 {Constant.Colour} The color with which to blend the paper doll system bottom left. c_white to draw it normally.
-	///@param _c4 {Constant.Colour} The color with which to blend the paper doll system bottom right. c_white to draw it normally.
+	///@param _color {Constant.Colour} The color with which to blend the paper doll systems top left. c_white to draw it normally.
 	///@param _alpha {real} The alpha of the paper doll system, from 0 to 1, where 0 is fully transparent and 1 is fully opaque.
 	static DrawSelfExt = function(_x, _y, _xscale, _yscale, _angle, _color, _alpha) {
 		var _shake_x = 0
@@ -351,6 +349,13 @@ function PaperDollSystem(_template_key) constructor {
     static GetCurrentFrame = function() {
         return __currentframe;
     }
+	
+	///@desc Returns the array_length of a given animation
+	///@param _animation {real} The animation to check.
+	static GetAnimationLength = function(_animation) {
+		return __template.animations[_animation];	
+	}
+	
 
 	///@desc Animates the paper doll system.
     static Animate = function() {

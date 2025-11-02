@@ -11,10 +11,11 @@
     {"name":"Swords","order":19,"path":"folders/Demo/Sprites/Character/Swords.yy",},
     {"name":"Parallax","order":1,"path":"folders/Demo/Sprites/Parallax.yy",},
     {"name":"PaperDollSystem","order":18,"path":"folders/PaperDollSystem.yy",},
-    {"name":"Retro Palette Swap","order":2,"path":"folders/PaperDollSystem/Retro Palette Swap.yy",},
+    {"name":"Retro Palette Swap","order":1,"path":"folders/PaperDollSystem/Retro Palette Swap.yy",},
     {"name":"Shaders","order":1,"path":"folders/PaperDollSystem/Retro Palette Swap/Shaders.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"LICENSE","order":2,"path":"notes/LICENSE/LICENSE.yy",},
     {"name":"obj_demo","order":7,"path":"objects/obj_demo/obj_demo.yy",},
     {"name":"obj_music","order":6,"path":"objects/obj_music/obj_music.yy",},
     {"name":"obj_parallax","order":4,"path":"objects/obj_parallax/obj_parallax.yy",},

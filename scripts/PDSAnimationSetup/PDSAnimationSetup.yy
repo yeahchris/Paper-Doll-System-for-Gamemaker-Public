@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"PDSAnimationSetup",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/PaperDollSystem/Scripts.yy",
+    "name":"PDS System Scripts",
+    "path":"folders/PaperDollSystem/PDS System Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
