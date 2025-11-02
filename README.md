@@ -10,7 +10,7 @@ Sprite sheet templates can be created via a function call without editing any co
 
 The system integrates with (and is bundled with) **Pixelated Pope’s RetroPaletteSwapper**, allowing arbitrary palette swaps of individual paper doll parts.
 
-There is a demo project included in the repository, but it uses free assets of very poor quality and overall does a poor job of showing off the system's capabilities. Here is a video demo which uses paid assets:
+There is a demo project included in the repository, but it uses free assets, and does not demonstrate palette swapping of paper doll layers. Here is a video demo which uses paid assets:
 
 
 
