@@ -6,7 +6,7 @@ Using this system, animations can assembled entirely through code and are animat
 
 Assemble animations using any frame from any region of a sprite sheet, arbitrarily mirror frames, and specify a custom duration (in either milliseconds or game frames) for each animation frame — all with just a few lines of code.
 
-Sprite sheet templates can be created via a function call without editing any code. The system is (in theory) compatible with any grid-based sprite sheet that has a consistent layout for its animations.
+Sprite sheet templates can be created via a function call without editing any code. The system is (in theory) compatible with any grid-based sprite sheet that has a consistent layout.
 
 The system integrates with (and is bundled with) **Pixelated Pope’s RetroPaletteSwapper**, allowing arbitrary palette swaps of individual paper doll parts.
 
