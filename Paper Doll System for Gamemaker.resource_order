@@ -15,7 +15,6 @@
     {"name":"Shaders","order":1,"path":"folders/PaperDollSystem/Retro Palette Swap/Shaders.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"License","order":3,"path":"notes/License/License.yy",},
     {"name":"obj_demo","order":7,"path":"objects/obj_demo/obj_demo.yy",},
     {"name":"obj_music","order":6,"path":"objects/obj_music/obj_music.yy",},
     {"name":"obj_parallax","order":4,"path":"objects/obj_parallax/obj_parallax.yy",},
