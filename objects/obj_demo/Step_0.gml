@@ -45,3 +45,5 @@ image_alpha = obj_selector.alpha;
 move_and_collide(move_x,move_y,collidables);
 x = clamp(x,0,room_width);
 y = clamp(y,0,room_height);
+
+show_debug_message(pds.GetAnimationLength((pds.GetCurrentAnimation())));

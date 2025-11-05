@@ -20,12 +20,12 @@ function AddPDSTemplate (_key,_animation_array,_frame_width,_frame_height,_sheet
 
 ///@desc Returns an empty animation struct with the following variables:
 ///----------------------------------------------------------------------
-///framenum: an array of numbered frames for the animation.
+///framenumber: an array of numbered frames for the animation.
 ///xscale: an array of xscales for the frame (1 to draw it normally, -1 to mirror it).
 ///duration: an array of numbers indicating the amount of time to show that frame for. Duration can be set either in frames or milliseconds (determined by the sheet template assigned to the paper doll system).
 function PDSAnimation(_name) constructor {
 	name = _name;
-	framenum = [0];
+	framenumber = [0];
 	xscale = [0];
 	duration = [0];
 }
@@ -357,7 +357,7 @@ function PaperDollSystem(_template_key) constructor {
 	///@desc Returns the array_length of a given animation
 	///@param _animation {real} The animation to check.
 	static GetAnimationLength = function(_animation) {
-		return __template.animations[_animation];	
+		return array_length(__template.animations[_animation].framenumber);	
 	}
 	
 
