@@ -216,6 +216,8 @@ function PaperDollSystem(_template_key) constructor {
 		array_push(__paletteswaps,_struct);
 	}
 	
+	///@desc Removes a previously set up palette swap for a given sprite.
+	///@param _sprite {asset} The sprite for which you want to clear the palette swap.
 	static RemovePaletteSwap = function (_sprite) {
 		if (array_length(__paletteswaps) > 0){
 			for (var i = 0; i < array_length(__paletteswaps);i++){
