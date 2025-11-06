@@ -14,7 +14,10 @@
     "name":"Objects",
     "path":"folders/Demo/Objects.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_demo_3d",
+    "path":"objects/obj_demo_3d/obj_demo_3d.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

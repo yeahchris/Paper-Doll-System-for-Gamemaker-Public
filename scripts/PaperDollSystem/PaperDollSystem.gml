@@ -337,6 +337,59 @@ function PaperDollSystem(_template_key) constructor {
 		__lastframexscale = _framexscale;
     }
 	
+	
+	
+	///@desc Draws the paper doll system using a matrix. Experimental.
+	static DrawSelfMatrix = function(_x, _y, _z, _xrot, _yrot, _zrot, _xscale, _yscale, _zscale, _angle, _color) {
+		var _shake_x = 0
+		var _shake_y = 0;
+		var _surface_new = false;
+		var _framenum = __animation.framenumber[__currentframe];
+        var _frame = GetFrame(_framenum);
+		var _coords = FrameCoordsToPixelCoords(_frame.X, _frame.Y);
+		var _framexscale = __animation.xscale[__currentframe]
+        var _xoffset = sprite_get_xoffset(other.sprite_index);
+        var _yoffset = sprite_get_yoffset(other.sprite_index);
+		if (__shake == true){
+			_shake_x = random_range(-__shakemagnitude,__shakemagnitude);
+			_shake_y = random_range(-__shakemagnitude,__shakemagnitude);
+		}
+		if (surface_exists(__surface) == false){
+			__surface = surface_create(__template.frame_width,__template.frame_height);
+			_surface_new = true;
+		}
+
+		if (_framenum != __lastanimframe || _framexscale != __lastframexscale || _surface_new == true){
+			surface_set_target(__surface);
+			draw_clear_alpha(c_black,0)
+			var _mirrorcorrection = 0
+			if (_framexscale == -1) _mirrorcorrection = __template.frame_width;
+
+			for (var i = 0; i < array_length(__sprite_array); i++) {
+				if (__sprite_array[i] == 0) continue;
+				if (array_length(__paletteswaps) > 0){
+					for (var ii = 0; ii < array_length(__paletteswaps);ii++){
+						if (__sprite_array[i] == __paletteswaps[ii].sprite){
+							pal_swap_set(__paletteswaps[ii].palette,__paletteswaps[ii].index,false);
+							break;
+						}
+					}
+				}
+				draw_sprite_part_ext(__sprite_array[i],0,_coords.X,_coords.Y,__template.frame_width,__template.frame_height, _shake_x + _mirrorcorrection,_shake_y,__animation.xscale[__currentframe],1, c_white,1);
+				pal_swap_reset();
+				}
+			surface_reset_target();
+			}
+		var _surf_x = 0 - _xoffset * _xscale * dcos(_angle) - _yoffset * _yscale * dsin(_angle);
+	    var _surf_y = 0 + _xoffset * _xscale * dsin(_angle) - _yoffset * _yscale * dcos(_angle);
+		var _matrix = matrix_build(_x,_y,_z,_xrot,_yrot,_zrot,_xscale,_yscale,_zscale);
+		matrix_set(matrix_world,_matrix);
+		draw_surface_ext(__surface,_surf_x+_shake_x,_surf_y+_shake_y,_xscale,_yscale,_angle,_color,1);
+		matrix_set(matrix_world,matrix_build_identity());
+		__lastanimframe = _framenum;
+		__lastframexscale = _framexscale;
+    }
+	
 
 
 	///@desc Returns true on the frame the animation completes if the current animation has more than one frame. Otherwise returns false.

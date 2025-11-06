@@ -10,12 +10,18 @@ enum SLOT {
 	SWORD
 }
 
-var _selector = dbg_view("Paper Doll System",true,5,80,300,550);
+if (room == room_demo) {
+	obj = instance_create_layer(room_width/2,room_height/2,"Instances", obj_demo)
+} else {
+	obj = instance_create_layer(room_width/2,room_height/1.5,"Instances", obj_demo_3d)
+}
+
+selector = dbg_view("Paper Doll System",true,5,80,300,550);
 
 dbg_section("Demo Character",true);
 
 dbg_button("Toggle Helmet",function(){
-	with (obj_demo) {
+	with (obj) {
 			if (pds.GetSpriteAtIndex(SLOT.HELMET) == spr_Elm_Helmet){
 				pds.ClearSpriteAtIndex(SLOT.HELMET);
 			} else {
@@ -27,7 +33,7 @@ dbg_button("Toggle Helmet",function(){
 
 
 dbg_button("Toggle Shield",function(){
-	with (obj_demo) {
+	with (obj) {
 			if (pds.GetSpriteAtIndex(SLOT.SHIELD) == spr_Elm_Shield){
 				pds.ClearSpriteAtIndex(SLOT.SHIELD);
 			} else {
@@ -38,7 +44,7 @@ dbg_button("Toggle Shield",function(){
 100,50);
 
 dbg_button("Toggle Boots",function(){
-	with (obj_demo) {
+	with (obj) {
 			if (pds.GetSpriteAtIndex(SLOT.BOOTS) == spr_Elm_Metal_Boots){
 				pds.ClearSpriteAtIndex(SLOT.BOOTS);
 			} else {
@@ -50,7 +56,7 @@ dbg_button("Toggle Boots",function(){
 
 
 dbg_button("Toggle Sword",function(){
-	with (obj_demo) {
+	with (obj) {
 			if (pds.GetSpriteAtIndex(SLOT.SWORD) == other.swords[other.sword_selection]){
 				pds.ClearSpriteAtIndex(SLOT.SWORD);
 			} else {
@@ -62,7 +68,7 @@ dbg_button("Toggle Sword",function(){
 
 
 dbg_button("Toggle Gloves",function(){
-	with (obj_demo) {
+	with (obj) {
 			if (pds.GetSpriteAtIndex(SLOT.GLOVES) == other.gloves[other.gloves_selection]){
 				pds.ClearSpriteAtIndex(SLOT.GLOVES);
 			} else {
@@ -74,7 +80,7 @@ dbg_button("Toggle Gloves",function(){
 
 
 dbg_button("Toggle Clothes",function(){
-	with (obj_demo) {
+	with (obj) {
 			if (pds.GetSpriteAtIndex(SLOT.SUIT) == other.suits[other.suit_selection]){
 				pds.ClearSpriteAtIndex(SLOT.SUIT);
 			} else {
@@ -95,7 +101,7 @@ enum GLOVES {
 gloves[GLOVES.IRON] = spr_Elm_Gloves_1;
 gloves[GLOVES.LEATHER] = spr_Elm_Gloves_2;
 
-gloves_selection = irandom(GLOVES.COUNT);
+gloves_selection = irandom(GLOVES.IRON);
 var _ref = ref_create(self.id,"gloves_selection");
 dbg_drop_down(_ref,[GLOVES.IRON,GLOVES.LEATHER],["Gauntlets","Gloves"],"Gloves");
 
@@ -103,14 +109,13 @@ enum HAIR {
 	SHORT,
 	PARTED,
 	SPIKY,
-	COUNT
 }
 
 hairstyles[HAIR.SHORT]	 =	 spr_Elm_Male_Hair_01;
 hairstyles[HAIR.PARTED]	 =	 spr_Elm_Male_Hair_02;
 hairstyles[HAIR.SPIKY]	 =	 spr_Elm_Male_Hair_03;
 
-hair_selection = irandom(HAIR.COUNT);
+hair_selection = irandom(HAIR.SPIKY);
 var _ref2 = ref_create(self.id,"hair_selection");
 dbg_drop_down(_ref2,[HAIR.SHORT,HAIR.PARTED,HAIR.SPIKY],["Short","Parted","Spiky"],"Hair");
 
@@ -126,7 +131,7 @@ suits[SUIT.SHIRT]	 =	 spr_Elm_Shirt;
 suits[SUIT.FARMER]	 =	 spr_Elm_Farmer_Suit;
 suits[SUIT.ARMOR]	 =	 spr_Elm_Solid_Suit;
 
-suit_selection = irandom(HAIR.COUNT);
+suit_selection = irandom(SUIT.ARMOR);
 var _ref3 = ref_create(self.id,"suit_selection");
 dbg_drop_down(_ref3,[SUIT.SHIRT,SUIT.FARMER,SUIT.ARMOR],["Shirt","Farmer","Armor"],"Clothes");
 
@@ -148,7 +153,7 @@ swords[SWORD.ICE]	 =	spr_Elm_Sword_2;
 swords[SWORD.WIND]	 =	spr_Elm_Sword_4;
 swords[SWORD.FIRE]	 =	spr_Elm_Sword_3;
 
-sword_selection = irandom(SWORD.COUNT);
+sword_selection = irandom(SWORD.FIRE);
 var _ref4 = ref_create(self.id,"sword_selection");
 dbg_drop_down(
 		_ref4,
@@ -159,7 +164,7 @@ dbg_drop_down(
 	
 dbg_section("Effects",true);
 dbg_button("Toggle Shake",function(){
-with (obj_demo) {
+with (obj) {
 		if (pds.GetShake() == true){
 			pds.SetShake(false);
 		} else {

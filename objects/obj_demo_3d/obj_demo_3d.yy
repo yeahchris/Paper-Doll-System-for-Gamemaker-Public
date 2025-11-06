@@ -1,14 +1,14 @@
 {
   "$GMObject":"",
-  "%Name":"obj_selector",
+  "%Name":"obj_demo_3d",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_selector",
+  "name":"obj_demo_3d",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -32,7 +32,13 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
-  "spriteMaskId":null,
+  "spriteId":{
+    "name":"spr_dummy",
+    "path":"sprites/spr_dummy/spr_dummy.yy",
+  },
+  "spriteMaskId":{
+    "name":"spr_dummy",
+    "path":"sprites/spr_dummy/spr_dummy.yy",
+  },
   "visible":true,
 }

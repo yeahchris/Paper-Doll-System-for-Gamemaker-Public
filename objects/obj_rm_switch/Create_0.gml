@@ -1,6 +1,5 @@
-music = audio_play_sound(ost_calmbgm,1000,1,1);
 display_set_gui_size(426,240);
 guiwidth = display_get_gui_width();
 guiheight = display_get_gui_height();
-x = guiwidth*.95;
-y = guiheight*.05;
+x = guiwidth;
+y = guiheight;
