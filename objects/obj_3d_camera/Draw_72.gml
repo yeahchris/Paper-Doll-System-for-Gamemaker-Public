@@ -6,8 +6,8 @@ var yto = obj_demo_3d.y;
 var zto = 35;
 
 var xfrom = obj_demo_3d.x;
-var yfrom = obj_demo_3d.y+100;
-var zfrom = 50;
+var yfrom = obj_demo_3d.y+200;
+var zfrom = 90;
 
 
 
