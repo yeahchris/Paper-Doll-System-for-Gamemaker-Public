@@ -19,10 +19,10 @@ function AddPDSTemplate (_key,_animation_array,_frame_width,_frame_height,_sheet
 }
 
 ///@desc Returns an empty animation struct with the following variables:
-///----------------------------------------------------------------------
-///framenumber: an array of numbered frames for the animation.
-///xscale: an array of xscales for the frame (1 to draw it normally, -1 to mirror it).
-///duration: an array of numbers indicating the amount of time to show that frame for. Duration can be set either in frames or milliseconds (determined by the sheet template assigned to the paper doll system).
+///_____________________________________________________________________
+///framenumber ---- an array of numbered frames for the animation.
+///xscale ---- an array of xscales for the frame (1 to draw it normally, -1 to mirror it).
+///duration ---- an array of numbers indicating the amount of time to show that frame for. Duration can be set either in frames or milliseconds (determined by the sheet template assigned to the paper doll system).
 function PDSAnimation(_name) constructor {
 	name = _name;
 	framenumber = [0];
@@ -76,10 +76,10 @@ function PaperDollSystem(_template_key) constructor {
 	__lastframexscale = undefined;
 	
 
-	
+	///@method ApplyTemplate(_template)
 	///@desc Applies a previously created template to the paper doll system.
-	///@param {string} _template The name of the template to apply as a single word without spaces.
-	static ApplyTemplate = function(_template){
+	///@param {string} _template_key The name/key of the template to apply as a single word without spaces.
+	static ApplyTemplate = function(_template_key){
 		if variable_instance_exists(global.PDSTemplates,_template){
 			__template = global.PDSTemplates[$ _template];	
 		} else {
@@ -87,6 +87,7 @@ function PaperDollSystem(_template_key) constructor {
 		}
 	}
 	
+	///@method GetFrame(_framenum)
 	///@desc Takes in a frame number (counted left to right, top to bottom) and returns the X and Y coordinates (in frames) for that frame.
 	///@param {real} _framenum The frame number as an integer.
 	static GetFrame = function(_framenum) {
@@ -97,7 +98,7 @@ function PaperDollSystem(_template_key) constructor {
 		return _struct
 	}
 	
-	
+	///@method AddSprite(_sprite)
 	///@desc Adds a new sprite for the paper doll system to draw on top of all existing sprites.
 	///@param _sprite {asset} The sprite asset for the system to add.
     static AddSprite = function(_sprite) {
@@ -109,6 +110,7 @@ function PaperDollSystem(_template_key) constructor {
 		}
     }
 	
+	///@method AddSpriteAtIndex(_sprite,_index)
 	///@desc Adds a sprite at a specified index for the paper doll system to draw. Sprites at higher indexes will be drawn on top of sprites at lower indexes. Will overwrite existing sprite at that index if the index is already in use. Useful if you want pre-defined equipment 'slots'.
 	///@param _sprite {asset} The sprite to add.
 	///@param _index {real} The index to add it at. Integer.
@@ -121,28 +123,33 @@ function PaperDollSystem(_template_key) constructor {
 		}
     }
 	
+	///@method SetShakeMagnitude(_magnitude)
 	///@desc Sets the magnitude of the shake effect that will be used when SetShake method is used.
 	///@param _magnitude {real} (Recommended: 1)
 	static SetShakeMagnitude = function(_magnitude) {
 		__shakemagnitude = _magnitude;	
 	}
 	
+	///@method GetShakeMagnitude
 	///@desc Returns the current magnitude of the shake effect.
 	static GetShakeMagnitude = function(){
 		return __shakemagnitude;	
 	}
 	
+	///@method SetShake(_bool)
 	///@desc Used to toggle the shake effect.
-	///@param _bool {boolean} True (turns the shake effect on) or False (turns the shake effect off)
+	///@param {bool} _bool True (turns the shake effect on) or False (turns the shake effect off)
 	static SetShake = function (_bool) {
 		__shake = _bool;
 	}
 	
+	///@method GetShake
 	///@desc Returns true if the shake effect is currently enabled, returns false if it is not.
 	static GetShake = function() {
 		return __shake;	
 	}
 	
+	///@method ClearSpriteAtIndex(_index)
 	///@desc Clears the sprite at a given index without deleting the slot. Use if you are using indexes slots for paper doll layers.
 	///@param {real} _index The index to clear.
 	static ClearSpriteAtIndex = function(_index) {
@@ -150,6 +157,7 @@ function PaperDollSystem(_template_key) constructor {
 		__lastanimframe = -1;
 	}
 	
+	///@method RemoveSprite(_sprite)
 	///@desc Removes the first instance of a given sprite and deletes its slot. Use if you're not using static indexes for paper doll layers.
 	///@param {asset} _sprite The sprite to remove.
     static RemoveSprite = function(_sprite) {
@@ -160,13 +168,14 @@ function PaperDollSystem(_template_key) constructor {
         }
     }
 	
+	///@method GetAnimationName(_animation)
 	///@desc Takes in an animation number (enumerator) and returns the name of that animation (a string).
 	///@param {real} _animation The animation number (use the enumerator)
 	static GetAnimationName = function(_animation) {
 		return __template.animations[_animation].name;			
 	}
 	
-	
+	///@method ContainsSprite(_sprite)
 	///@desc Returns true if the specified sprite is already being drawn by the paper doll system.
 	///@param {asset} _sprite The sprite to check.
 	static ContainsSprite = function(_sprite){
@@ -175,6 +184,7 @@ function PaperDollSystem(_template_key) constructor {
         }
 	}
 	
+	///@method GetSpriteAtIndex(_index)
 	///@desc Returns the sprite at a given index.
 	///@param {real} _index The index to check. Integer. Returns 0 for an empty slot. Returns undefined if slot exceeds the length of the sprite array.
 	static GetSpriteAtIndex = function(_index){
@@ -184,9 +194,11 @@ function PaperDollSystem(_template_key) constructor {
 			return undefined;	
 		}
 	}
-
+	
+	
+	///@method SetAnimation(_animation)
 	///@desc Takes in an animation number (enumerator), retrieves the animation struct, and sets that to be the current animation.
-	///@param _animation {real} The animation number
+	///@param {real} _animation The animation number
     static SetAnimation = function(_animation) {
         if (is_struct(__template.animations[_animation]) == true && __template.animations[_animation] != __animation) {
             __animation = __template.animations[_animation];
@@ -195,11 +207,11 @@ function PaperDollSystem(_template_key) constructor {
         }
 		__currentanimation = _animation;
     }
-
+	///@method SetPaletteSwap(_sprite,_palette_sprite,_index)
 	///@desc Specifies a palette swap for the given sprite.
-	///@param _sprite {asset} The sprite you want to do the palette swap on.
-	///@param _palette_sprite {asset} The palette sprite with which to do the swap.
-	///@param _index {real} The number of pixels into the palette sprite you wish to step.
+	///@param {asset} _sprite The sprite you want to do the palette swap on.
+	///@param {asset} _palette_sprite The palette sprite with which to do the swap.
+	///@param {real} _index The number of pixels into the palette sprite you wish to step.
 	static SetPaletteSwap = function (_sprite, _palette_sprite, _index) {
 		var _struct = {
 			sprite : _sprite,
@@ -216,8 +228,9 @@ function PaperDollSystem(_template_key) constructor {
 		array_push(__paletteswaps,_struct);
 	}
 	
+	///@method RemovePaletteSwap(_sprite)
 	///@desc Removes a previously set up palette swap for a given sprite.
-	///@param _sprite {asset} The sprite for which you want to clear the palette swap.
+	///@param {asset} _sprite The sprite for which you want to clear the palette swap.
 	static RemovePaletteSwap = function (_sprite) {
 		if (array_length(__paletteswaps) > 0){
 			for (var i = 0; i < array_length(__paletteswaps);i++){
@@ -230,6 +243,7 @@ function PaperDollSystem(_template_key) constructor {
 		__lastanimframe = -1;
 	}
 	
+	///@method DrawSelf
 	///@desc Draws the paper doll system at the calling instances' X and Y coordinate using the calling instance's default draw parameters (image_xscale, image_yscale, image_blend, image_alpha)
     static DrawSelf = function() {
 		var _shake_x = 0
@@ -283,13 +297,13 @@ function PaperDollSystem(_template_key) constructor {
 	
 
 	///@desc Draws the paper doll system allows you to pass custom values to be used in place of x, y, image_xscale,image_yscale, image_blend, and image_alpha.
-	///@param _x {real} The X coordinate at which to draw the paper doll system.
-	///@param _y {real} The Y coordinate at which to draw the paper doll system.
-	///@param _xscale {real} Horizontal scaling multiplier, .5 to draw it at half width, 2 to draw it at double its normal width.
-	///@param _yscale {real} Vertical scaling multiplier, .5 to draw it at half height, 2 to draw it at double its normal height.
-	///@param _angle {real} Rotation to apply to the drawn paper doll system.
-	///@param _color {Constant.Colour} The color with which to blend the paper doll systems top left. c_white to draw it normally.
-	///@param _alpha {real} The alpha of the paper doll system, from 0 to 1, where 0 is fully transparent and 1 is fully opaque.
+	///@param {real} _x The X coordinate at which to draw the paper doll system.
+	///@param {real} _y The Y coordinate at which to draw the paper doll system.
+	///@param {real} _xscale Horizontal scaling multiplier, .5 to draw it at half width, 2 to draw it at double its normal width.
+	///@param {real} _yscale Vertical scaling multiplier, .5 to draw it at half height, 2 to draw it at double its normal height.
+	///@param {real} _angle Rotation to apply to the drawn paper doll system.
+	///@param {Constant.Colour} _color The color with which to blend the paper doll systems top left. c_white to draw it normally.
+	///@param {real} _alpha The alpha of the paper doll system, from 0 to 1, where 0 is fully transparent and 1 is fully opaque.
 	static DrawSelfExt = function(_x, _y, _xscale, _yscale, _angle, _color, _alpha) {
 		var _shake_x = 0
 		var _shake_y = 0;
@@ -338,7 +352,7 @@ function PaperDollSystem(_template_key) constructor {
     }
 	
 	
-	
+	///@method DrawSelfMatrix
 	///@desc Draws the paper doll system using a matrix. Experimental.
 	static DrawSelfMatrix = function(_x, _y, _z, _xrot, _yrot, _zrot, _xscale, _yscale, _zscale, _angle, _color) {
 		var _shake_x = 0
@@ -391,7 +405,7 @@ function PaperDollSystem(_template_key) constructor {
     }
 	
 
-
+	///@method AnimationEnd
 	///@desc Returns true on the frame the animation completes if the current animation has more than one frame. Otherwise returns false.
     static AnimationEnd = function() {
         if (__animationEnd == true) {
@@ -401,19 +415,20 @@ function PaperDollSystem(_template_key) constructor {
 		}
     }
 
-
+	///@method GetCurrentFrame
 	///@desc Returns the current frame of the current animation as an integer.
     static GetCurrentFrame = function() {
         return __currentframe;
     }
 	
+	///@method GetAnimationLength(_animation)
 	///@desc Returns the array_length of a given animation
-	///@param _animation {real} The animation to check.
+	///@param {real} _animation The animation to check.
 	static GetAnimationLength = function(_animation) {
 		return array_length(__template.animations[_animation].framenumber);	
 	}
 	
-
+	///@method Animate
 	///@desc Animates the paper doll system.
     static Animate = function() {
         if (__frametimer <= 0) {
@@ -437,6 +452,7 @@ function PaperDollSystem(_template_key) constructor {
         }
     }
 	
+	///@method SetCurrentFrame(_frame)
 	///@desc Sets the current frame of the current animation to the frame you specify.
 	///@param {real} _frame The frame you wish to set the current animation to
 	static SetCurrentFrame = function(_frame) {
@@ -449,7 +465,8 @@ function PaperDollSystem(_template_key) constructor {
 		return;
 	}
 	
-	///@desc Converts milliseconds to game frames.
+	///@method MillisecondstoGameFrames(_milliseconds)
+	///@desc - Converts milliseconds to game frames.
 	///Used by the paper doll system for animation when using a template where animations are timed in milliseconds. Typically does not need to be called manually.
 	///(Unless you want to).
 	///@param {real} _milliseconds The number (in milliseconds) to return in game frames.
@@ -458,20 +475,22 @@ function PaperDollSystem(_template_key) constructor {
     return _frames;
 	}
 	
-	///@desc Returns the current animation number.
+	///@method GetCurrentAnimation
+	///@desc - Returns the current animation number.
 	static GetCurrentAnimation = function(){
 		return __currentanimation;	
 	}
 	
+	///@method GetAnimationStruct(_animation)
 	///@desc Returns the current animation's struct.
 	static GetAnimationStruct = function(_animation) {
 		return __template.animations[_animation];	
 	}
 	
-	
+	///@method FrameCoordsToPixelCoords(_x,_y)
 	///@desc Takes in the FRAME X/Y coordinate for a given sheet frame and returns the PIXEL coordinates for that frame. This is used by the PDS drawing methods. Typically does not need to be called manually. 
-	///@param _x {real} Integer. The X coordinate of the frame, usually returned by GetFrame.
-	///@param _y {real} Integer. The Y coordinate of the frame, usually returned by GetFrame.
+	///@param {real} _x Integer. The X coordinate of the frame, usually returned by GetFrame.
+	///@param {real} _y Integer. The Y coordinate of the frame, usually returned by GetFrame.
 	static FrameCoordsToPixelCoords = function(_x,_y) {
 		_x *= __template.frame_width;
 	    _y *= __template.frame_height;
@@ -481,7 +500,7 @@ function PaperDollSystem(_template_key) constructor {
 	    }
 	    return _frame;
 	}
-	
+	///@method Cleanup
 	///@desc Cleans up the paper doll system. Use prior to deleting the object.
 	static Cleanup = function() {
         surface_free(__surface);
